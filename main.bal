@@ -9,7 +9,7 @@ service / on new http:Listener(9090) {
         string apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
 
         http:Client httpClient = check new (apiUrl);
-        json payload = <json> check httpClient -> get("/", targetType = json);
+        json payload = <json> check httpClient -> get("", targetType = json);
 
         return payload;
     }
